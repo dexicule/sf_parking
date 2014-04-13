@@ -1,6 +1,6 @@
 read -p "Choose your admin password?" passwd
 sudo pip install virtualenv
-sudo pip install psycopg2
+sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install psycopg2
 virtualenv venv --distribute
 source venv/bin/activate
 pip freeze > requirements.txt
