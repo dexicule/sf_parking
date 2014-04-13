@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<class 'sqlite3.IntegrityError'> column COORDINATES is not unique"
+p3
+sS'layer'
+p4
+S'/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py'
+p5
+sS'code'
+p6
+S'import json\nimport os\n\n\nclass Map:\n    """\n    Map class handles finding nearest bike parking location algorithm.\n    TO DO: apply space harsh algorithms like KD-Tree search rather than O(n) search.\n    """\n\n    @classmethod\n    def all_coordinates(cls):\n        return cache.ram("all_coords", lambda: db().select(db.bike_parking.COORDINATES), None)\n\n    @classmethod\n    def nearest_coordinate(cls, lat, lng):\n        coords = cls.all_coordinates();\n        min_coord = coords[0]\n        min_dist = cls.distance(float(min_coord["COORDINATES"][0]), float(min_coord["COORDINATES"][1]),\n            lat, lng)\n    \n        for coord in coords:\n            ilat = float(coord["COORDINATES"][0])\n            ilng = float(coord["COORDINATES"][1])\n            dist = cls.distance(ilat, ilng, lat, lng)\n            if dist < min_dist:\n                min_dist = dist\n                min_coord = coord\n    \n        return min_coord\n\n    @classmethod\n    def distance(cls, lat_a, lng_a, lat_b, lng_b):\n        return (lat_a - lat_b) * (lat_a - lat_b) + (lng_a - lng_b) * (lng_a - lng_b)\n\n\n@request.restful()\ndef nearest_api():\n    """\n    Rest API to get nearest bike parking location of given coordinate.\n    """\n\n    def GET(*args, **coord):\n        try:\n            ncoord = Map.nearest_coordinate(float(coord["lat"]), float(coord["lng"]))["COORDINATES"]\n            data = db.bike_parking(COORDINATES=ncoord)\n            return data.as_json()\n        except Exception, e:\n            return e\n    return locals()\n\n\ndef populate_db():\n    """\n    Load Json file and populate the bike parking table.\n    """\n\n    data_path = os.path.join(request.folder, \'static/resource\', \'bike_data.json\')\n    data_file = open(data_path, \'r\')\n    data_json = json.load(data_file)\n\n    # Load column meta info\n    # create column name - index map\n    meta_column = data_json["meta"]["view"]["columns"]\n    dict_column = dict()\n    for index, column in enumerate(meta_column):\n        dict_column[column["name"]] = index\n\n    entries = data_json["data"]\n    for id,entry in enumerate(entries):\n        insert_entry = {\n            "LOC": entry[dict_column["LOCATION"]],\n            "ADDRESS": entry[dict_column["ADDRESS"]],\n            "BIKE_PARKING": entry[dict_column["BIKE_PARKING"]],\n            "PLACEMENT": entry[dict_column["PLACEMENT"]],\n            "RACKS": entry[dict_column["RACKS"]],\n            "SPACES": entry[dict_column["SPACES"]],\n            "YR_INSTALLED": entry[dict_column["YR_INSTALLED"]],\n            "COORDINATES": [entry[dict_column["COORDINATES"]][1], entry[dict_column["COORDINATES"]][2]]}\n        db.bike_parking.insert(**insert_entry)\n    return {"status": "success"}\n\nresponse._vars=response._caller(populate_db)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/hanli/SideProj/Server/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py", line 83, in <module>\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 385, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py", line 80, in populate_db\n    db.bike_parking.insert(**insert_entry)\n  File "/Users/hanli/SideProj/Server/web2py/gluon/dal.py", line 9114, in insert\n    ret =  self._db._adapter.insert(self, self._listify(fields))\n  File "/Users/hanli/SideProj/Server/web2py/gluon/dal.py", line 1360, in insert\n    raise e\nIntegrityError: column COORDINATES is not unique\n'
+p11
+s.

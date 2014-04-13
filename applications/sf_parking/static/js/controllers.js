@@ -44,6 +44,7 @@ angular.module('sf_bike_parking')
 	// Call back on rest api response
 	$scope.updateNearestsCallback = function (data) {
 		$scope.clearParkingMarker();
+		console.log(data);
 		$scope.addParkingMarker(data["COORDINATES"][0], data["COORDINATES"][1]);
 	}
   

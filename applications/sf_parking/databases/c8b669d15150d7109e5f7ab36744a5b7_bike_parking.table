@@ -65,7 +65,7 @@ p21
 I00
 sS'sortable'
 p22
-I6
+I7
 sS'sql'
 p23
 S'INTEGER'
@@ -85,7 +85,7 @@ I32768
 sg21
 I00
 sg22
-I2
+I3
 sg23
 S'TEXT'
 p30
@@ -118,7 +118,7 @@ I512
 sg21
 I00
 sg22
-I5
+I6
 sg23
 S'INTEGER'
 p37
@@ -134,7 +134,7 @@ I512
 sg21
 I00
 sg22
-I7
+I8
 sg23
 S'CHAR(512)'
 p40
@@ -151,7 +151,7 @@ I32768
 sg21
 I00
 sg22
-I1
+I2
 sg23
 S'TEXT'
 p44
@@ -167,7 +167,7 @@ I512
 sg21
 I00
 sg22
-I3
+I4
 sg23
 S'CHAR(512)'
 p47
@@ -183,7 +183,7 @@ I512
 sg21
 I00
 sg22
-I4
+I5
 sg23
 S'CHAR(512)'
 p50
@@ -236,32 +236,32 @@ p64
 g20
 I512
 sg21
-I01
+I00
 sg22
-I8
+I9
 sg23
-S'TEXT NOT NULL UNIQUE'
+S'TEXT'
 p66
 sg25
-I01
+I00
 sg26
 S'list:string'
 p67
 ssS'id'
 p68
 (dp69
-g4
+g20
+I512
+sg21
+I00
+sg22
 I1
-sg5
+sg23
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
 p70
-sg7
-I512
-sg8
+sg25
 I00
-sg9
-I00
-sg10
+sg26
 S'id'
 p71
 ssS'act'

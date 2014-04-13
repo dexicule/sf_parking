@@ -1031,3 +1031,67 @@ CREATE TABLE bike_parking(
     COORDINATES TEXT NOT NULL UNIQUE,
     PRIMARY KEY(COORDINATES)) ;
 success!
+success!
+timestamp: 2014-04-13T06:58:20.357857
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T06:58:50.089954
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T06:58:55.229854
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:11:22.228643
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:13:45.032428
+ALTER TABLE bike_parking ADD id INTEGER NOT NULL;
+timestamp: 2014-04-13T07:15:12.641513
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:18:07.740281
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:18:48.392038
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:18:50.551323
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:19:42.622356
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:19:44.949411
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:19:51.951292
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-04-13T07:20:40.906370
+ALTER TABLE bike_parking ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
