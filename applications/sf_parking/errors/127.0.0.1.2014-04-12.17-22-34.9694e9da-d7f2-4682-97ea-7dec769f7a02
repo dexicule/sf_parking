@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.NameError'> global name 'os' is not defined"
+p3
+sS'layer'
+p4
+S'/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py'
+p5
+sS'code'
+p6
+S'import json\n\n\ndef index():\n\treturn dict(message="hello from parkisssng.py")\n\n\ndef populate_db():\n\tdata_file = os.path.join(request.folder, \'static/resource\', \'bike_data.json\') \n\tdata = open(data_file, \'r\')\n\treturn data\n\n\nresponse._vars=response._caller(populate_db)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/hanli/SideProj/Server/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 14, in <module>\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 385, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 9, in populate_db\n    data_file = os.path.join(request.folder, \'static/resource\', \'bike_data.json\')\nNameError: global name \'os\' is not defined\n'
+p11
+s.

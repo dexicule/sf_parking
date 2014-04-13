@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.NameError'> global name 'cache' is not defined"
+p3
+sS'layer'
+p4
+S'/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py'
+p5
+sS'code'
+p6
+S'import json\nimport os\nfrom map import Map\n\n\ndef index():\n\treturn dict(message = Map.nearest_coordinate(37.783868, -122.420553))\n\n\ndef populate_db():\n\tdata_path = os.path.join(request.folder, \'static/resource\', \'bike_data.json\') \n\tdata_file = open(data_path, \'r\')\n\tdata_json = json.load(data_file)\n\t\n\t# Load column meta info\n\t# create column name - index map\n\tmeta_column = data_json["meta"]["view"]["columns"]\n\tdict_column = dict()\n\tfor index, column in enumerate(meta_column):\n\t\tdict_column[column["name"]] = index\n\t\n\tentries = data_json["data"]\n\tfor id,entry in enumerate(entries):\n\t\tinsert_entry = {\n\t\t\t"LOC": entry[dict_column["LOCATION"]],\n\t\t\t"ADDRESS": entry[dict_column["ADDRESS"]],\n\t\t\t"BIKE_PARKING": entry[dict_column["BIKE_PARKING"]],\n\t\t\t"PLACEMENT": entry[dict_column["PLACEMENT"]],\n\t\t\t"RACKS": entry[dict_column["RACKS"]],\n\t\t\t"SPACES": entry[dict_column["SPACES"]],\n\t\t\t"YR_INSTALLED": entry[dict_column["YR_INSTALLED"]],\n\t\t\t"COORDINATES": [entry[dict_column["COORDINATES"]][1], entry[dict_column["COORDINATES"]][2]]\n\t\t}\n\t\tresult = db.bike_parking.insert(**insert_entry)\n\treturn {"status": "success"}\n\n\nresponse._vars=response._caller(index)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/hanli/SideProj/Server/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 38, in <module>\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 385, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 7, in index\n    return dict(message = Map.nearest_coordinate(37.783868, -122.420553))\n  File "applications/sf_parking/modules/map.py", line 9, in nearest_coordinate\n    coords = cls.all_coordinates();\n  File "applications/sf_parking/modules/map.py", line 5, in all_coordinates\n    return gluon.cache.ram("coords", lambda: db().select(db.bike_parking.COORDINATES), time_expire=None)\nNameError: global name \'cache\' is not defined\n'
+p11
+s.

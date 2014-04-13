@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.NameError'> global name 'table_name' is not defined"
+p3
+sS'layer'
+p4
+S'/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py'
+p5
+sS'code'
+p6
+S"\n\n@request.restful()\ndef rest_api():\n    def GET(table_name, id):\n    \tif not table_name == 'bike_parking':\n    \t\traise HTTP(404)\n        return dict(bike_parking = db.bike_parking(id))\n    def POST(tablename,**fields):\n        if not table_name == 'bike_parking':\n    \t\traise HTTP(404)\n    \treturn db.bike_parking.validate_and_insert(**fields)\n    def PUT(*args,**vars):\n        return dict()\n    def DELETE(*args,**vars):\n        return dict()\n    return locals()\nresponse._vars=response._caller(rest_api)\n"
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/hanli/SideProj/Server/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py", line 18, in <module>\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 385, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 349, in f\n    return rest_action(*_self.args, **getattr(_self,\'vars\',{}))\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py", line 10, in POST\n    if not table_name == \'bike_parking\':\nNameError: global name \'table_name\' is not defined\n'
+p11
+s.

@@ -1,0 +1,6 @@
+[2014-04-12 11:52:03] START
+[2014-04-12 13:24:41] CREATE parking/sf.html: 0
+[2014-04-12 13:25:32] EDIT sf_parking/views/parking/sf.html: -1
+[2014-04-12 13:28:07] CREATE parking.py: 0
+[2014-04-12 13:28:30] EDIT sf_parking/controllers/parking.py: 0
+[2014-04-12 13:30:46] EDIT sf_parking/views/parking/index.html: 0

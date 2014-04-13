@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.IOError'> [Errno 2] No such file or directory: '/sf_parking/static/resource/bike_data.json'"
+p3
+sS'layer'
+p4
+S'/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py'
+p5
+sS'code'
+p6
+S'import json\n\n\ndef index():\n\treturn dict(message="hello from parkisssng.py")\n\n\ndef populate_db():\n\tdata = open(\'/sf_parking/static/resource/bike_data.json\', \'r\')\n\treturn data\n\n\nresponse._vars=response._caller(populate_db)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/hanli/SideProj/Server/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 13, in <module>\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 385, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 9, in populate_db\n    data = open(\'/sf_parking/static/resource/bike_data.json\', \'r\')\nIOError: [Errno 2] No such file or directory: \'/sf_parking/static/resource/bike_data.json\'\n'
+p11
+s.

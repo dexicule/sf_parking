@@ -1,0 +1,19 @@
+<ion-view title="FiveStars Log In">
+	<ion-content scroll="false">
+		<div class = "row">
+			<div class="col col-center">
+				  <label class="item item-input">
+				    <i class="icon ion-search placeholder-icon"></i>
+				    <input type="text" placeholder="Type Address" ng-model="address">
+				  </label>
+			</div>
+			<div class="col col-20 col-center text-center">
+				<button class="button button-positive" style="width:100%;min-width:100px" ng-click="search(address)">Search</button>
+			</div>
+		</div>
+		<div id="map"></div>
+	</ion-content>
+</ion-view>
+<ion-footer-bar class="bar-dark">
+    <a ng-click="myLocation()" class="button button-icon icon ion-navigate">Near Me</a>
+</ion-footer-bar>

@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.ValueError'> could not convert string to float: ABC"
+p3
+sS'layer'
+p4
+S'/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py'
+p5
+sS'code'
+p6
+S'import json\n\nclass Map:\n\n\t@classmethod\n\tdef all_coordinates(cls):\n\t\treturn cache.ram("all_coords", lambda: db().select(db.bike_parking.COORDINATES), None)\n\t\n\t@classmethod\n\tdef nearest_coordinate(cls, lang, long):\n\t\tcoords = cls.all_coordinates();\n\t\tmin_coord = coords[0]\n\t\tmin_dist = cls.distance(float(min_coord["COORDINATES"][0]), float(min_coord["COORDINATES"][1]),\n\t\t\tlang, long)\n\t\n\t\tfor coord in coords:\n\t\t\tilang = float(coord["COORDINATES"][0])\n\t\t\tilong = float(coord["COORDINATES"][1])\n\t\t\tdist = cls.distance(ilang, ilong, lang, long)\n\t\t\tif dist < min_dist:\n\t\t\t\tmin_dist = dist\n\t\t\t\tmin_coord = coord\n\t\n\t\treturn min_coord\n\t\n\t@classmethod\n\tdef distance(cls, lang_a, long_a, lang_b, long_b):\n\t\treturn (lang_a - lang_b) * (lang_a - lang_b) + (long_a - long_b) * (long_a - long_b)\n\n\n@request.restful()\ndef nearest_api():\n    def GET(key, **coord):\n    \tif not key == \'loc\':\n    \t\traise HTTP(404)\n\n        return db.bike_parking(Map.nearest_coordinate(float(coord["lang"]), float(coord["long"])))\n    return locals()\nresponse._vars=response._caller(nearest_api)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/hanli/SideProj/Server/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py", line 39, in <module>\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 385, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 349, in f\n    return rest_action(*_self.args, **getattr(_self,\'vars\',{}))\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/api.py", line 37, in GET\n    return db.bike_parking(Map.nearest_coordinate(float(coord["lang"]), float(coord["long"])))\nValueError: could not convert string to float: ABC\n'
+p11
+s.

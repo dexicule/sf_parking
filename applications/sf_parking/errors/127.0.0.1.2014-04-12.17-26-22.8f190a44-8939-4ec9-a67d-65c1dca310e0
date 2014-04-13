@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.TypeError'> expected string or buffer"
+p3
+sS'layer'
+p4
+S'/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py'
+p5
+sS'code'
+p6
+S'import json\nimport os\n\ndef index():\n\treturn dict(message="hello from parkisssng.py")\n\n\ndef populate_db():\n\tdata_path = os.path.join(request.folder, \'static/resource\', \'bike_data.json\') \n\tdata_file = open(data_path, \'r\')\n\tdata_json = json.loads(data_file)\n\tentries = data_json["data"]\n\tfor entry in entries:\n\t\treturn entry\n\treturn data\n\n\nresponse._vars=response._caller(populate_db)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/hanli/SideProj/Server/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 18, in <module>\n  File "/Users/hanli/SideProj/Server/web2py/gluon/globals.py", line 385, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/hanli/SideProj/Server/web2py/applications/sf_parking/controllers/parking.py", line 11, in populate_db\n    data_json = json.loads(data_file)\n  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 338, in loads\n    return _default_decoder.decode(s)\n  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 365, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\nTypeError: expected string or buffer\n'
+p11
+s.
