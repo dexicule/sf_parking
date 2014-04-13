@@ -21,8 +21,7 @@ angular.module('sf_bike_parking')
 	    });
 
 	    google.maps.event.addListener(map, 'click', function(e) {
-	    	$scope.clearUserMarker();
-	        $scope.addUserMarker(e.latLng.lat(), e.latLng.lng());
+	        $scope.moveUserMarker(e.latLng.lat(), e.latLng.lng());
 	        $scope.GetNearestParkings(e.latLng.lat(), e.latLng.lng());
 	        return false;
 	    });
@@ -60,8 +59,7 @@ angular.module('sf_bike_parking')
 	
 	    navigator.geolocation.getCurrentPosition(function(pos) {
 		        $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-		        $scope.clearUserMarker();
-		        $scope.addUserMarker(pos.coords.latitude, pos.coords.longitude);
+		        $scope.moveUserMarker(pos.coords.latitude, pos.coords.longitude);
 		        $scope.GetNearestParkings(pos.coords.latitude, pos.coords.longitude);
 		        $scope.loading.hide();
 	    	},
@@ -72,7 +70,8 @@ angular.module('sf_bike_parking')
 	};
 
 	// add a userMarker at given location
-	$scope.addUserMarker = function(lat, lng) {
+	$scope.moveUserMarker = function(lat, lng) {
+		$scope.clearUserMarker();
 		var myLatlng = new google.maps.LatLng(lat, lng);
 		var marker = new google.maps.Marker({
 		    position: myLatlng,
@@ -122,7 +121,7 @@ angular.module('sf_bike_parking')
 		$scope.geocoder.geocode( { 'address': address}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		        $scope.map.setCenter(results[0].geometry.location);
-		        $scope.addUserMarker(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+		        $scope.moveUserMarker(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 		        $scope.GetNearestParkings(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 		    } else {
 		        alert('Geocode was not successful for the following reason: ' + status);
