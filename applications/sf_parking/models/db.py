@@ -12,13 +12,13 @@
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
     #db = DAL('sqlite://storage.sqlite',pool_size=1,check_reserved=['all'])
-	from gluon.contrib.heroku import get_db
-	db = get_db(name=None, pool_size=10)
+    from gluon.contrib.heroku import get_db
+    db = get_db(name=None, pool_size=10)
 else:
     ## connect to Google BigTable (optional 'google:datastore://namespace')
-    #db = DAL('google:datastore')
-	from gluon.contrib.heroku import get_db
-	db = get_db(name=None, pool_size=10)
+    db = DAL('google:datastore')
+	#from gluon.contrib.heroku import get_db
+    db = get_db(name=None, pool_size=10)
     ## store sessions and tickets there
     session.connect(request, response, db=db)
     ## or store session in Memcache, Redis, etc.
